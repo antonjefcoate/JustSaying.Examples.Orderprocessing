@@ -34,8 +34,9 @@ namespace ComsumerSite.Controllers
         [HttpPost]
         public ActionResult Index(OrderDetails orderDetails)
         {
-            _publisher.Publish(new PlaceOrder(new List<string>{orderDetails.Item1, orderDetails.Item2}, orderDetails.Price, orderDetails.CustomerName));
-            return View("Placed");
+            var placeOrderCommand = new PlaceOrder(new List<string>{orderDetails.Item1, orderDetails.Item2}, orderDetails.Price, orderDetails.CustomerName);
+            _publisher.Publish(placeOrderCommand);
+            return View("Placed", placeOrderCommand);
         }
 
 	}

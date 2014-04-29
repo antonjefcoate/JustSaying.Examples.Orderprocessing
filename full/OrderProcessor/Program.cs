@@ -1,5 +1,6 @@
 ﻿using System;
 using Messages;
+using Messages.Events;
 
 namespace JustSaying.Examples.OrderProcessing.OrderProcessor
 {
@@ -19,10 +20,13 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
                 });
             
             // Add a handler for the place order command
-            bus.WithMessageHandler(new OrderPlacement(bus));
+            bus.WithMessageHandler(new OrderPlacement(bus))
+
+            // State our intent to publish Order Accepted events
+            .WithSnsMessagePublisher<OrderAccepted>(Constants.OrderProcessingTopic)
 
             // Start listening for messages
-            bus.StartListening();
+            .StartListening();
 
             Console.Read();
         }
