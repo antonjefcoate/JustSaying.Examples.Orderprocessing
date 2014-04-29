@@ -1,6 +1,8 @@
-﻿namespace Messages.Events
+﻿using JustSaying.Messaging.Messages;
+
+namespace Messages.Events
 {
-    public class OrderAccepted
+    public class OrderAccepted : Message
     {
     }
 }
