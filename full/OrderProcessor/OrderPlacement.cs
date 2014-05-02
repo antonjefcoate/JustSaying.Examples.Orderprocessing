@@ -17,7 +17,7 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
             _publisher = publisher;
         }
 
-        public bool Handle(PlaceOrder message)
+        public virtual bool Handle(PlaceOrder message)
         {
             Console.WriteLine("I've been asked to place an order for '{0}' costing '{1}'", message.CustomerName, message.Price);
 

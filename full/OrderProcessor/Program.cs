@@ -19,7 +19,8 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
                 })
             
             // Add a handler for the place order command
-            .WithMessageHandler(new OrderPlacement(bus))
+            //.WithMessageHandler(new OrderPlacement(bus))
+            .WithMessageHandler(new OrderPlacementWithIntermittentDbError(bus))
             .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 2)
 
             // State our intent to publish Order Accepted events
