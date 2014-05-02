@@ -26,16 +26,41 @@ namespace Restaurant
 
         public bool Handle(OrderValidatedOk message)
         {
+            // If we're still deciding on an order, wait till later to grab the message.
+            if (_currentOrderId.HasValue)
+                return false;
+
             _currentOrderId = message.OrderId;
 
             DoUI(() => { NameBox.Text = message.CustomerName; });
             DoUI(() => { IdBox.Text = message.OrderId.ToString(); });
             DoUI(() => { OrderItems.Text = message.OrderContents; });
 
-            return false;
+            return true;
         }
 
-        #region Ignore...thread safe nonsense...
+        private void AcceptButton_Click(object sender, EventArgs e)
+        {
+            _publisher.Publish(new OrderAccepted(_currentOrderId.Value));
+            ClearForm();
+        }
+
+        private void RejectButton_Click(object sender, EventArgs e)
+        {
+            _publisher.Publish(new OrderRejected(_currentOrderId.Value, "We just don't care"));
+            ClearForm();
+        }
+
+        private void ClearForm()
+        {
+            NameBox.Clear();
+            IdBox.Clear();
+            OrderItems.Clear();
+        }
+
+
+
+        #region Ignore...thread safe UI nonsense...
         private delegate void InvokeAction();
         private void DoUI(InvokeAction call)
         {
@@ -60,24 +85,5 @@ namespace Restaurant
             }
         }
         #endregion
-
-        private void AcceptButton_Click(object sender, EventArgs e)
-        {
-            _publisher.Publish(new OrderAccepted(_currentOrderId.Value));
-            ClearForm();
-        }
-
-        private void RejectButton_Click(object sender, EventArgs e)
-        {
-            _publisher.Publish(new OrderRejected(_currentOrderId.Value, "We just don't care"));
-            ClearForm();
-        }
-
-        private void ClearForm()
-        {
-            NameBox.Clear();
-            IdBox.Clear();
-            OrderItems.Clear();
-        }
     }
 }
