@@ -24,7 +24,7 @@ namespace Restaurant
             JustSaying.CreateMeABus.InRegion(Amazon.RegionEndpoint.EUWest1.SystemName)
                 .WithSqsTopicSubscriber(Messages.Constants.OrderProcessingTopic)
                 .IntoQueue("RestaurantOrders")
-                .WithMessageHandler<OrderAccepted>(form);
+                .WithMessageHandler(form);
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Messages;
+using Messages.Commands;
 using Messages.Events;
 
 namespace JustSaying.Examples.OrderProcessing.OrderProcessor
@@ -18,7 +19,7 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
                 })
             
             // Add a handler for the place order command
-            .WithMessageHandler<OrderAccepted>(new OrderPlacement(bus))
+            .WithMessageHandler(new OrderPlacement(bus))
             .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 2)
 
             // State our intent to publish Order Accepted events
