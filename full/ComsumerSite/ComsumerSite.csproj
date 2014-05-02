@@ -44,15 +44,15 @@
     </Reference>
     <Reference Include="JustSaying, Version=1.2.85.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JustSaying.0.85\lib\net40\JustSaying.dll</HintPath>
+      <HintPath>..\packages\JustSaying.0.87\lib\net40\JustSaying.dll</HintPath>
     </Reference>
     <Reference Include="JustSaying.AwsTools, Version=1.2.85.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JustSaying.0.85\lib\net40\JustSaying.AwsTools.dll</HintPath>
+      <HintPath>..\packages\JustSaying.0.87\lib\net40\JustSaying.AwsTools.dll</HintPath>
     </Reference>
     <Reference Include="JustSaying.Messaging, Version=1.2.85.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JustSaying.0.85\lib\net40\JustSaying.Messaging.dll</HintPath>
+      <HintPath>..\packages\JustSaying.0.87\lib\net40\JustSaying.Messaging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
