@@ -8,19 +8,18 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
     {
         static void Main(string[] args)
         {
-            var bus = CreateMe.ABus(config =>
-            {
-                config.Region = "eu-west-1";
-            })  
-                // Subscribe to order processing topic
-                .WithSqsTopicSubscriber(config =>
+            var bus = JustSaying.CreateMeABus.InRegion("eu-west-1");
+
+               bus.WithSqsTopicSubscriber(Constants.OrderProcessingTopic)
+                .IntoQueue("OrderProcessorOrders")
+                .ConfigureSubscriptionWith(config =>
                 {
-                    config.Topic = Constants.OrderProcessingTopic;
                     config.MessageRetentionSeconds = 120;
-                });
+                })
             
             // Add a handler for the place order command
-            bus.WithMessageHandler(new OrderPlacement(bus))
+            .WithMessageHandler<OrderAccepted>(new OrderPlacement(bus))
+            .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 2)
 
             // State our intent to publish Order Accepted events
             .WithSnsMessagePublisher<OrderAccepted>(Constants.OrderProcessingTopic)

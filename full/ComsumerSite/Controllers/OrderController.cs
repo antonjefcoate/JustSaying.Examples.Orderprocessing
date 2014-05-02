@@ -16,10 +16,8 @@ namespace ComsumerSite.Controllers
 
         public OrderController()
         {
-            _publisher = JustSaying.CreateMe.ABus(config =>
-            {
-                config.Region = "eu-west-1";
-            })
+            _publisher = JustSaying.CreateMeABus.InRegion("eu-west-1")
+                .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 1)
                 .WithSnsMessagePublisher<PlaceOrder>(Constants.OrderProcessingTopic);
 
         }

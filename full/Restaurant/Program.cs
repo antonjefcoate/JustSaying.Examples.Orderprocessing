@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JustSaying.Messaging.MessageHandling;
+using Messages.Events;
 
 namespace Restaurant
 {
@@ -16,7 +18,14 @@ namespace Restaurant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var form = new Form1();
+            Application.Run(form);
+
+            JustSaying.CreateMeABus.InRegion(Amazon.RegionEndpoint.EUWest1.SystemName)
+                .WithSqsTopicSubscriber(Messages.Constants.OrderProcessingTopic)
+                .IntoQueue("RestaurantOrders")
+                .WithMessageHandler<OrderAccepted>(form);
+
         }
     }
 }
