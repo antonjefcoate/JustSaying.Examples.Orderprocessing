@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using JustSaying.Messaging.MessageHandling;
 using Messages.Events;
 
 namespace Restaurant
@@ -18,14 +14,25 @@ namespace Restaurant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var form = new Form1();
-            Application.Run(form);
+            
+            var bus = JustSaying.CreateMeABus.InRegion(Amazon.RegionEndpoint.EUWest1.SystemName);
 
-            JustSaying.CreateMeABus.InRegion(Amazon.RegionEndpoint.EUWest1.SystemName)
-                .WithSqsTopicSubscriber(Messages.Constants.OrderProcessingTopic)
+            var form = new Form1(bus);
+
+                bus.WithSqsTopicSubscriber(Messages.Constants.OrderProcessingTopic)
                 .IntoQueue("RestaurantOrders")
-                .WithMessageHandler(form);
+                .ConfigureSubscriptionWith(config => config.ErrorQueueOptOut = true)
+                .WithMessageHandler(form)
+                
+                .ConfigurePublisherWith(config => { config.PublishFailureReAttempts = 3; config.PublishFailureBackoffMilliseconds = 50; })
+                .WithSnsMessagePublisher<OrderAccepted>(Messages.Constants.RestaurantOrdersTopic)
+                .WithSnsMessagePublisher<OrderRejected>(Messages.Constants.RestaurantOrdersTopic)
+                
+                .StartListening();
 
+
+
+            Application.Run(form);
         }
     }
 }

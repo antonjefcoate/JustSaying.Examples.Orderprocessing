@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using JustSaying.Messaging;
 using JustSaying.Messaging.MessageHandling;
@@ -28,7 +29,7 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
 
             // Order Validated.
             Console.WriteLine("VALIDATED OK: order for '{0}'", message.CustomerName);
-            _publisher.Publish(new OrderAccepted());
+            _publisher.Publish(new OrderValidatedOk(message.OrderId, string.Join(", ", message.OrderContents), message.Price, message.CustomerName));
 
             return true;
         }

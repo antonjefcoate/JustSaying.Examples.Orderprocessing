@@ -23,7 +23,7 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
             .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 2)
 
             // State our intent to publish Order Accepted events
-            .WithSnsMessagePublisher<OrderAccepted>(Constants.OrderProcessingTopic)
+            .WithSnsMessagePublisher<OrderValidatedOk>(Constants.OrderProcessingTopic)
 
             // Start listening for messages
             .StartListening();

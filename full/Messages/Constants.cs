@@ -10,5 +10,6 @@ namespace Messages
     {
         public const string TeamName = "PaymanAndAnton";
         public const string OrderProcessingTopic = "OrderProcessing";
+        public const string RestaurantOrdersTopic = "RestaurantProcessing";
     }
 }
