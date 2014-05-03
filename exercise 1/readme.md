@@ -1,4 +1,4 @@
-#Exercixe 1:
+#Exercise 1:
 
 We are going to instruct the OrderProcessor component to place an order made by the ConsumerSite.
 ConsumerSite will publish a command and OrderProcessor will pick it up and do some work on it.
