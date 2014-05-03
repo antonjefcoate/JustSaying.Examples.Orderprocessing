@@ -11,7 +11,8 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
 
         }
 
-        public virtual bool Handle(PlaceOrder message)
+        // Order processing method. Needs to be called with a PlaceOrder message from the JustSaying bus.
+        private bool PlaceAnOrder(PlaceOrder message)
         {
             Console.WriteLine("I've been asked to place an order for '{0}' costing '{1}'", message.CustomerName, message.Price);
 

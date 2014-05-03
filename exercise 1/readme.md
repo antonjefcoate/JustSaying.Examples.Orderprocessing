@@ -23,6 +23,7 @@ Prerequisites: Ensure you have setup 'multiple startup projects' for your soluti
 4. Consume the command in OrderProcessor and get the OrderPlacement class to do it's bit
  * Tell OrderPlacement that it can handle OrderPlaced commands
 		`: IHandler<PlaceOrder>`
+ * Handle the message as required by the interface (Return true - Assuming all orders get placed ok for now) by wiring up the private processing method 'PlaceAnOrder'
  * Setup a subscription in the OrderProcessor Program.cs to listen in to PlaceOrder commands and send them to the OrderProcessor
 		
 	
