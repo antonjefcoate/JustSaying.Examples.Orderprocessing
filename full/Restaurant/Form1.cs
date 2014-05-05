@@ -22,6 +22,7 @@ namespace Restaurant
         {
             _publisher = publisher;
             InitializeComponent();
+            ClearForm();
         }
 
         public bool Handle(OrderValidatedOk message)
@@ -35,6 +36,9 @@ namespace Restaurant
             DoUI(() => { NameBox.Text = message.CustomerName; });
             DoUI(() => { IdBox.Text = message.OrderId.ToString(); });
             DoUI(() => { OrderItems.Text = message.OrderContents; });
+
+            DoUI(() => { AcceptButton.Enabled = true; });
+            DoUI(() => { RejectButton.Enabled = true; });
 
             return true;
         }
@@ -53,9 +57,14 @@ namespace Restaurant
 
         private void ClearForm()
         {
+            _currentOrderId = null;
+
             NameBox.Clear();
             IdBox.Clear();
             OrderItems.Clear();
+
+            AcceptButton.Enabled = false;
+            RejectButton.Enabled = false;
         }
 
 
