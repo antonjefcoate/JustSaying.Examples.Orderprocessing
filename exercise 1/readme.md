@@ -19,11 +19,16 @@ Prerequisite: Ensure you have setup 'multiple startup projects' for your solutio
 2. Create a command
  * We've created the command (message) for you
  * Ensure the command can be published by inheriting the JustSaying message type on the PlaceOrder command
+ * `public class PlaceOrder: Message`
 
 3. Publish the command from your ConsumerSite / Order controller HttpPost action
  * Create a bus & configure for publishing
+ * `_publisher = JustSaying.CreateMeABus.InRegion("eu-west-1")
+         .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 1)
+         .WithSnsMessagePublisher<PlaceOrder>(Constants.OrderProcessingTopic);`
  * Populate the 'PlaceOrder' command
  * Publish
+ * `_publisher.Publish(placeOrderCommand);`
 
 4. Consume the command in OrderProcessor and get the OrderPlacement class to do it's bit
  * Tell OrderPlacement that it can handle OrderPlaced commands
