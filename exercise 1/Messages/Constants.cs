@@ -1,8 +1,10 @@
-﻿namespace Messages
+﻿using System;
+
+namespace Messages
 {
     public static class Constants
     {
-        private const string TeamName = "PaymanAndAnton";
-        public static string OrderProcessingTopic = "OrderProcessing";
+        private static readonly string TeamName = Environment.MachineName;
+        public static string OrderProcessingTopic = TeamName + "OrderProcessing";
     }
 }
