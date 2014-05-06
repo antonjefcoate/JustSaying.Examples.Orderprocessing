@@ -7,6 +7,8 @@ namespace ComsumerSite.Controllers
 {
     public class OrderController : Controller
     {
+        //private readonly IMessagePublisher _publisher;
+
         public OrderController()
         {
             // Setup your bus here for publishing.
