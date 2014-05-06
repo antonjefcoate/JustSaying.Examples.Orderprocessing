@@ -20,7 +20,6 @@ Prerequisites: Ensure you have setup 'multiple startup projects' for your soluti
  * Tell JustSaying to pass OrderValidatedOk events through to Form1 so that we can see incoming messages.
  * `.WithSqsTopicSubscriber(Messages.Constants.OrderProcessingTopic)
                 .IntoQueue("RestaurantOrders")
-                .ConfigureSubscriptionWith(config => config.ErrorQueueOptOut = true)
                 .WithMessageHandler(form)`
  * Tell JustSaying to start listening for mesages now. `.StartListening();`
  * Running the project now & placing an order should display order details in the Restaurant's form and show on the front end as 'sending order to restaurant'

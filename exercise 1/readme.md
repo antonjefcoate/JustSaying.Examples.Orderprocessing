@@ -47,6 +47,5 @@ Subscriber Bus Config:
     JustSaying.CreateMeABus.InRegion("eu-west-1")
                 .WithSqsTopicSubscriber(Constants.OrderProcessingTopic)
                 .IntoQueue("OrderProcessorOrders")
-                .ConfigureSubscriptionWith(config => { config.MessageRetentionSeconds = 120; })
                 .WithMessageHandler(new OrderPlacement())
             .StartListening();

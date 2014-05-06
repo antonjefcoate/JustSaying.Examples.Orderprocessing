@@ -13,10 +13,6 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
 
                bus.WithSqsTopicSubscriber(Constants.OrderProcessingTopic)
                 .IntoQueue("OrderProcessorOrders")
-                .ConfigureSubscriptionWith(config =>
-                {
-                    config.MessageRetentionSeconds = 120;
-                })
             
             // Add a handler for the place order command
             .WithMessageHandler(new OrderPlacement(bus))
