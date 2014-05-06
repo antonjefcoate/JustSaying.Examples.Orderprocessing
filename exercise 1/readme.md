@@ -1,13 +1,18 @@
 #Exercise 1:
 
+**Covers:**
+Basic usage of JustSaying. Wiring up a publisher and a consumer.
+
 We are going to instruct the OrderProcessor component to place an order made by the ConsumerSite.
 ConsumerSite will publish a command and OrderProcessor will pick it up and do some work on it.
 
 
-Prerequisites: Ensure you have setup 'multiple startup projects' for your solution of: ConsumerSite and OrderProcesor.
+**Open /Exercise 1/JustSaying.Examples.OrderProcessing.sln**
+
+Prerequisite: Ensure you have setup 'multiple startup projects' for your solution of: ConsumerSite and OrderProcesor.
 
 
-1. Install the JustSaying package
+1. Install the JustSaying package into **each** of the projects
  * install-package JustSaying
  * Note: Ensure you have the Just Eat package source configured (http://packages.je-labs.com/nuget/Default)
 
