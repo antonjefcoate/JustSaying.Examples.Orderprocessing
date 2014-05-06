@@ -20,10 +20,6 @@ namespace ComsumerSite
             JustSaying.CreateMeABus.InRegion("eu-west-1")
                 .WithSqsTopicSubscriber(Constants.RestaurantOrdersTopic)
                 .IntoQueue("OrderResolution")
-                .ConfigureSubscriptionWith(config =>
-                {
-                    config.MessageRetentionSeconds = 120;
-                })
                 .WithMessageHandler<OrderAccepted>(dispatcher)
                 .WithMessageHandler<OrderRejected>(dispatcher)
                 .StartListening();

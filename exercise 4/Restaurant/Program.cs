@@ -21,7 +21,6 @@ namespace Restaurant
 
                 bus.WithSqsTopicSubscriber(Messages.Constants.OrderProcessingTopic)
                 .IntoQueue("RestaurantOrders")
-                .ConfigureSubscriptionWith(config => config.ErrorQueueOptOut = true)
                 .WithMessageHandler(form)
                 
                 .ConfigurePublisherWith(config => { config.PublishFailureReAttempts = 3; config.PublishFailureBackoffMilliseconds = 50; })
