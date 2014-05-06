@@ -29,10 +29,8 @@ namespace JustSaying.Examples.OrderProcessing.OrderProcessor
 
             // Order Validated.
             Console.WriteLine("VALIDATED OK: order for '{0}'", message.CustomerName);
-
-
-
-            // Raise an event here to say that the order has been processed successfully.
+            
+            //Todo: publish OrderValidatedOK
 
             return true;
         }

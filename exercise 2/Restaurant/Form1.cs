@@ -1,4 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using JustSaying.Messaging;
 using JustSaying.Messaging.MessageHandling;
@@ -17,8 +24,8 @@ namespace Restaurant
             InitializeComponent();
             ClearForm();
         }
-        
-        private bool ShowOrder(OrderValidatedOk message)
+
+        public bool ShowOrder(OrderValidatedOk message)
         {
             // If we're still deciding on an order, wait till later to grab the message.
             if (_currentOrderId.HasValue)
@@ -38,15 +45,13 @@ namespace Restaurant
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            //Publish accepted event here.
-
+            //Todo: publish order accepted
             ClearForm();
         }
 
         private void RejectButton_Click(object sender, EventArgs e)
         {
-            //Publish rejected event here.
-
+            //todo: publish order rejected
             ClearForm();
         }
 

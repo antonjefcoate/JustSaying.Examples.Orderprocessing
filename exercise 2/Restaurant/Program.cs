@@ -19,8 +19,9 @@ namespace Restaurant
 
             var form = new Form1(bus);
 
-            
-            // Configure JustSaying here for subscriptions and publications.
+            //Todo: Register publisher 
+            //Todo: Register Subscriber
+
 
 
             Application.Run(form);
