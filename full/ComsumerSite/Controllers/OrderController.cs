@@ -19,7 +19,6 @@ namespace ComsumerSite.Controllers
             _publisher = JustSaying.CreateMeABus.InRegion("eu-west-1")
                 .ConfigurePublisherWith(conf => conf.PublishFailureReAttempts = 1)
                 .WithSnsMessagePublisher<PlaceOrder>(Constants.OrderProcessingTopic);
-
         }
 
         //

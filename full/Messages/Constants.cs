@@ -9,7 +9,7 @@ namespace Messages
     public static class Constants
     {
         public const string TeamName = "PaymanAndAnton";
-        public const string OrderProcessingTopic = "OrderProcessing";
-        public const string RestaurantOrdersTopic = "RestaurantProcessing";
+        public const string OrderProcessingTopic = TeamName + "OrderProcessing";
+        public const string RestaurantOrdersTopic = TeamName + "RestaurantProcessing";
     }
 }

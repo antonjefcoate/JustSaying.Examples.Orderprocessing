@@ -44,17 +44,17 @@
     <Reference Include="AWSSDK">
       <HintPath>..\packages\AWSSDK.2.0.14.0\lib\net45\AWSSDK.dll</HintPath>
     </Reference>
-    <Reference Include="JustSaying, Version=1.2.85.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="JustSaying, Version=1.2.99.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JustSaying.0.87\lib\net40\JustSaying.dll</HintPath>
+      <HintPath>..\packages\JustSaying.0.99\lib\net40\JustSaying.dll</HintPath>
     </Reference>
-    <Reference Include="JustSaying.AwsTools, Version=1.2.85.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="JustSaying.AwsTools, Version=1.2.99.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JustSaying.0.87\lib\net40\JustSaying.AwsTools.dll</HintPath>
+      <HintPath>..\packages\JustSaying.0.99\lib\net40\JustSaying.AwsTools.dll</HintPath>
     </Reference>
-    <Reference Include="JustSaying.Messaging, Version=1.2.85.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="JustSaying.Messaging, Version=1.2.99.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JustSaying.0.87\lib\net40\JustSaying.Messaging.dll</HintPath>
+      <HintPath>..\packages\JustSaying.0.99\lib\net40\JustSaying.Messaging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.0.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
